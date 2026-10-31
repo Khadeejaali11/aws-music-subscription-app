@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoirWave — Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+</head>
+
+<body class="page-enter">
+
+  <!-- LIQUID BLOB BACKGROUND -->
+  <div class="blob-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- PAGE -->
+  <main class="page" role="main">
+
+    <!-- CARD -->
+    <div class="card" role="region" aria-label="Create a NoirWave account">
+
+      <div class="brand">
+        <div class="brand-logo">NoirWave</div>
+        <div class="brand-tagline">Music. Elevated.</div>
+      </div>
+
+      <div class="form-header">
+        <h1 class="form-title">Create account</h1>
+        <p class="form-subtitle">Join and start listening today</p>
+      </div>
+
+      <!-- Error -->
+      <div class="error-box" id="error-box" role="alert" aria-live="polite" aria-atomic="true">
+        <span aria-hidden="true">⚠</span>
+        <span id="error-text">The email already exists</span>
+      </div>
+
+      <!-- Fields -->
+      <div class="field">
+        <label for="email">Email address</label>
+        <input
+          type="email" id="email" name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          aria-required="true"
+          aria-describedby="error-box"
+        />
+      </div>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input
+          type="text" id="username" name="username"
+          placeholder="Your display name"
+          autocomplete="username"
+          aria-required="true"
+        />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password" id="password" name="password"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          aria-required="true"
+          aria-describedby="error-box"
+        />
+      </div>
+
+      <!-- SVG Border Button -->
+      <button class="btn-svg-auth" id="register-btn" type="button" aria-label="Create NoirWave account" onclick="handleRegister()">
+        <svg>
+          <rect x="0" y="0" width="100%" height="100%"></rect>
+        </svg>
+        Create Account
+      </button>
+
+      <div class="divider"><span>or</span></div>
+
+      <div class="register-link">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

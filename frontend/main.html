@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NoirWave — Your Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+</head>
+
+<body class="page-enter">
+
+  <!-- LIQUID BLOB BACKGROUND -->
+  <div class="blob-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">NoirWave</div>
+    <div class="nav-right">
+      <div class="nav-user">
+        <div class="nav-avatar" aria-hidden="true">♪</div>
+        <span id="username-display" class="nav-username"></span>
+      </div>
+      <button class="nav-logout" onclick="logout()" aria-label="Log out of NoirWave">
+        Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <main class="dashboard" role="main" id="dashboard">
+
+    <!-- LEFT PANEL — Library -->
+    <section class="panel panel-library" id="library-panel" aria-label="Your subscribed songs">
+
+      <div class="library-collapsed" id="library-collapsed">
+        <button class="library-expand-btn" onclick="expandLibrary()" aria-label="Expand your library">
+          <span class="library-collapsed-icon">♫</span>
+          <span class="library-collapsed-count" id="collapsed-count">0</span>
+          <span class="library-collapsed-label">Library</span>
+        </button>
+      </div>
+
+      <div class="library-content" id="library-content">
+        <div class="panel-header">
+          <h2 class="panel-title">Your Library</h2>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="panel-count" id="sub-count">0 songs</span>
+            <button onclick="collapseLibrary()" aria-label="Minimise library" style="background:rgba(147,90,230,0.15); border:1px solid rgba(147,90,230,0.35); border-radius:6px; color:var(--accent); font-size:11px; padding:4px 10px; cursor:pointer; font-family:'Inter',sans-serif; font-weight:600; letter-spacing:0.04em; transition:all 0.2s ease;">
+              ← Hide
+          </button>
+        </div>
+      </div>
+
+        <div class="empty-state" id="empty-state" aria-live="polite">
+          <div class="empty-icon" aria-hidden="true">♫</div>
+          <p class="empty-text">Your library is empty</p>
+          <p class="empty-sub">Search for songs and subscribe to build your collection</p>
+        </div>
+
+        <div class="song-list" id="subscription-list" aria-live="polite" aria-label="Subscribed songs"></div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT PANEL — Search -->
+    <section class="panel panel-search" aria-label="Search for songs">
+
+      <div class="panel-header">
+        <h2 class="panel-title">Discover</h2>
+      </div>
+
+      <!-- Animated expanding search bar -->
+      <div class="search-wrapper" id="search-wrapper">
+        <input
+          type="text"
+          class="search-input"
+          id="search-title"
+          placeholder="Search by title..."
+          autocomplete="off"
+          aria-label="Search songs by title"
+        />
+        <button class="search-button" id="search-btn" aria-label="Toggle search">
+          <div class="icon-circle"></div>
+          <div class="icon-handle"></div>
+        </button>
+      </div>
+
+      <!-- Extra fields shown when search expands -->
+      <div class="search-extra" id="search-extra">
+        <div class="search-grid">
+          <div class="search-field">
+            <label for="search-artist">Artist</label>
+            <input type="text" id="search-artist" placeholder="Artist name" autocomplete="off" />
+          </div>
+          <div class="search-field">
+            <label for="search-album">Album</label>
+            <input type="text" id="search-album" placeholder="Album name" autocomplete="off" />
+          </div>
+          <div class="search-field">
+            <label for="search-year">Year</label>
+            <input type="text" id="search-year" placeholder="e.g. 2012" autocomplete="off" maxlength="4" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="search-message" id="search-empty-msg" role="alert" aria-live="polite" style="display:none;">
+        ⚠ At least one field must be completed
+      </div>
+      <div class="search-message search-message--error" id="search-no-result" role="alert" aria-live="polite" style="display:none;">
+        No result is retrieved. Please query again
+      </div>
+
+      <!-- Results header — shows after search -->
+      <div class="results-header" id="results-header">
+        <div class="results-header-left">
+          <span class="results-label" id="results-count-text"></span>
+          <div class="results-query" id="results-query-text"></div>
+        </div>
+        <button class="btn-refine" onclick="refineSearch()" aria-label="Refine search">
+          ✦ Refine Search
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div class="results-grid" id="results-grid" aria-live="polite" aria-label="Search results"></div>
+
+    </section>
+
+  </main>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
